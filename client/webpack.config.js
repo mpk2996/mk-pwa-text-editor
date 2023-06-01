@@ -20,7 +20,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Text Editor App'
+        title: 'JATE'
       }),
 
     // Injects our custom service worker
@@ -33,9 +33,9 @@ module.exports = () => {
     new WebpackPwaManifest({
       fingerprints: false,
       inject: true,
-      name: 'Text Editor App',
-      short_name: 'App',
-      description: 'My PWA Text Editor!',
+      name: 'Just Another Text Editor',
+      short_name: 'JATE',
+      description: 'Just another text editor',
       background_color: '#225ca3',
       theme_color: '#225ca3',
       start_url: './',
@@ -54,13 +54,12 @@ module.exports = () => {
     // CSS loaders
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
-        // We use babel-loader in order to use ES6.
         use: {
           loader: 'babel-loader',
           options: {
