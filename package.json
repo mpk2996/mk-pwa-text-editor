@@ -5,21 +5,38 @@
   "main": "server.js",
   "scripts": {
     "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
-    "start": "npm run build && cd server && node server.js",
-    "server": "cd server nodemon server.js --ignore client",
+    "start": "cd server && node server.js",
+    "heroku-postbuild": "npm run build",
+    "server": "cd server && nodemon server.js --ignore client",
     "build": "cd client && npm run build",
-    "install": "cd server && npm i && cd ../client && npm i",
+    "install:client": "cd client && npm i",
+    "install:server": "cd server && npm i",
+    "postinstall": "npm run install:client && npm run install:server",
     "client": "cd client && npm start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^6.8.1",
     "express": "^4.17.1",
-    "if-env": "^1.0.4"
+    "html-webpack-plugin": "^5.5.1",
+    "if-env": "^1.0.4",
+    "webpack-cli": "^5.1.1",
+    "webpack-pwa-manifest": "^4.3.0",
+    "workbox-window": "^6.5.4"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-transform-runtime": "^7.22.4",
+    "babel-loader": "^9.1.2",
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "style-loader": "^3.3.3",
+    "webpack": "^5.85.0",
+    "workbox-webpack-plugin": "^6.6.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }
